@@ -1,0 +1,20 @@
+component: express # (required) name of the component. In that case, it's express.
+name: markdown-to-html-api
+org: shanyue
+
+inputs:
+  src: ./ # (optional) path to the source folder. default is a hello world app.
+  functionName: mardown-api
+  region: ap-shanghai
+  runtime: Nodejs12.16
+  exclude:
+    - .env
+  functionConf:
+    timeout: 200
+    memorySize: 128
+  apigatewayConf:
+    protocols:
+      - http
+      - https
+    environment: release
+    enableCORS: true #  允许跨域

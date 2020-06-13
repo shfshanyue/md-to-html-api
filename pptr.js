@@ -4,8 +4,8 @@ const DEFAULT_ENDPOINT = process.env.ENDPOINT || 'wss://chrome.browserless.io/'
 const MD_NICE = process.env.MD_NICE || 'https://mdnice.com'
 
 function getBrowser (endpoint) {
-  const isDev = process.env.NODE_ENV !== 'production'
-  return isDev ? puppeteer.launch({
+  const isDebug = Boolean(process.env.DEBUG)
+  return isDebug ? puppeteer.launch({
     executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     devtools: true
   }) : puppeteer.connect({ browserWSEndpoint: endpoint })
