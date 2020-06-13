@@ -1,0 +1,28 @@
+{
+  "name": "md2html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shfshanyue/md-to-html-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shfshanyue/md-to-html-api/issues"
+  },
+  "homepage": "https://github.com/shfshanyue/md-to-html-api#readme",
+  "dependencies": {
+    "@types/puppeteer-core": "^2.0.0",
+    "apollo-server-express": "^2.14.4",
+    "express": "^4.17.1",
+    "puppeteer-core": "^3.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
