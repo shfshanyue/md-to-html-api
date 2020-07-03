@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "ncu": "ncu"
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,13 @@
   },
   "homepage": "https://github.com/shfshanyue/md-to-html-api#readme",
   "dependencies": {
-    "@types/puppeteer-core": "^2.0.0",
-    "apollo-server-express": "^2.14.4",
+    "apollo-server-express": "^2.15.1",
     "express": "^4.17.1",
-    "puppeteer-core": "^3.3.0"
+    "puppeteer-core": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@types/puppeteer-core": "^2.0.0",
+    "nodemon": "^2.0.4",
+    "npm-check-updates": "^7.0.1"
   }
 }

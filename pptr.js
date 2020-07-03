@@ -18,8 +18,13 @@ function setting (page, config) {
     codeTheme
   }) => {
     const themeList = JSON.parse(localStorage.theme_list)
-    const targetTheme = themeList.find(x => x.name === theme)
-    const themeId = targetTheme ? targetTheme.themeId : 1
+    let id = 1
+    // themeId 指 themeList 中的 index
+    //
+    // const targetTheme = themeList.find((x, index) => id = index && x.name === theme)
+    // const themeId = targetTheme ? targetTheme.themeId : 1
+    themeList.find((x, index) => id = index && x.name === theme)
+    const themeId = id
     const codeThemeId = 1
 
     localStorage.content = content
@@ -31,7 +36,8 @@ function setting (page, config) {
 async function getHtmlFromMd (content, {
   browserWSEndpoint = DEFAULT_ENDPOINT,
   theme = '蔷薇紫',
-  codeTheme = '2'
+  codeTheme = '2',
+  formatType = 'juejin'
 }) {
   const browser = await getBrowser(browserWSEndpoint)
 
@@ -43,7 +49,7 @@ async function getHtmlFromMd (content, {
 
     await page.goto(MD_NICE, {
       timeout: 90000,
-      waitUntil: 'networkidle2'
+      waitUntil: 'networkidle0'
     });
     
     // configure markdon theme and code theme
@@ -51,15 +57,18 @@ async function getHtmlFromMd (content, {
 
     await page.reload({
       timeout: 90000,
-      waitUntil: 'networkidle2'
+      waitUntil: 'networkidle0'
     })
 
     // 添加微信外链脚注
-    await page.evaluate(() => {
-      document.getElementById('nice-menu-link-to-foot').click()
-    })
+    if (formatType === 'weixin') {
+      await page.evaluate(() => {
+        document.getElementById('nice-menu-link-to-foot').click()
+      })
+    }
+
     // 复制微信内容
-    await page.click('#nice-sidebar-wechat')
+    await page.click(`#nice-sidebar-${formatType}`)
 
     // 读取剪贴板内容
     const html = await page.evaluate(() => {

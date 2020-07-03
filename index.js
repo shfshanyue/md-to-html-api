@@ -4,28 +4,42 @@ const express = require('express')
 const { getHtmlFromMd } = require('./pptr')
 
 const typeDefs = gql`
+  enum FormatType {
+    WECHAT
+    ZHIHU
+    JUEJIN
+  }
+
   type Query {
     html (
       markdown: String!
       browserWSEndpoint: String
       theme: String
-      codeTheme: String
+      formatType: FormatType = JUEJIN
     ): String!
   }
 `
 
 const resolvers = {
+  // TODO: not work
+  FormatType: {
+    WECHAT: 'wechat',
+    ZHIHU: 'zhihu',
+    JUEJIN: 'juejin'
+  },
   Query: {
     html ({}, {
       markdown,
       browserWSEndpoint,
       theme,
+      formatType,
       codeTheme
     }) {
       return getHtmlFromMd(markdown, {
         browserWSEndpoint,
         theme,
-        codeTheme
+        codeTheme,
+        formatType: formatType.toLowerCase()
       })
     }
   }
