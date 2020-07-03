@@ -18,3 +18,4 @@ inputs:
       - https
     environment: release
     enableCORS: true #  允许跨域
+    serviceTimeout: 200

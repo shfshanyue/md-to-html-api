@@ -23,7 +23,7 @@ function setting (page, config) {
     //
     // const targetTheme = themeList.find((x, index) => id = index && x.name === theme)
     // const themeId = targetTheme ? targetTheme.themeId : 1
-    themeList.find((x, index) => id = index && x.name === theme)
+    themeList.find((x, index) => (id = index) && x.name === theme)
     const themeId = id
     const codeThemeId = 1
 
