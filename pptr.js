@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer-core')
 
 const DEFAULT_ENDPOINT = process.env.ENDPOINT || 'wss://chrome.browserless.io/'
-const MD_NICE = process.env.MD_NICE || 'https://mdnice.com'
+const MD_NICE = process.env.MD_NICE || 'https://mdnice.now.sh'
 
 function getBrowser (endpoint) {
   const isDebug = Boolean(process.env.DEBUG)
